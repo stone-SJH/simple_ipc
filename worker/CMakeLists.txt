@@ -1,0 +1,15 @@
+﻿cmake_minimum_required (VERSION 3.8)
+PROJECT(ipc-worker)
+set(CMAKE_CXX_STANDARD 14)
+
+# Add source to this project's executable.
+if (IPC_WIN32)
+	add_definitions(-DIPC_WIN32)
+	set(IPC_SRCS "../ipc/ipc.h" "../ipc/Windows/ipc_win.inl.h" "../ipc/Windows/ipc_win.cpp")
+	set(IPCUtility_SRCS "../tls/IPCUtility.h" "../tls/IPCUtility.cpp")
+elseif(IPC_OSX)
+	add_definitions(-DIPC_OSX)
+	set(IPC_SRCS "../ipc/ipc.h" "../ipc/OSX/ipc_osx.inl.h" "../ipc/OSX/ipc_osx.cpp")
+	set(IPCUtility_SRCS "../tls/IPCUtility.h" "../tls/IPCUtility.cpp")
+endif()
+add_executable (ipc-worker  ${IPC_SRCS} ${IPCUtility_SRCS} "worker.cpp")

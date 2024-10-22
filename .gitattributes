@@ -1,0 +1,2 @@
+TextureCompressionV1/external/ISPC/ISPC/osx/ispc filter=lfs diff=lfs merge=lfs -text
+TextureCompressionV1/external/ISPC/ISPC/win/ispc.exe filter=lfs diff=lfs merge=lfs -text
